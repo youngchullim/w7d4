@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as apiUtils from './util/api_util';
-import { receiveAllPokemon } from './actions/pokemon_actions';
-import pokeReducer from './reducers/pokemon_reducer';
+import configureStore from './store/store';
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
+  const store = configureStore();
 
-  window.pokeReducer = pokeReducer;
-  window.receiveAllPokemon = receiveAllPokemon;
-  window.fetchAllPokemon = apiUtils.fetchAllPokemon;
+  window.getState = store.getState; 
+  window.dispatch = store.dispatch;
 
   ReactDOM.render(<h1>React is broke</h1>, root);
 })
